@@ -14,7 +14,8 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
         <groupId>org.wso2.carbon</groupId>
@@ -74,6 +75,25 @@
             <artifactId>org.wso2.carbon.touchpoint.feature</artifactId>
             <type>zip</type>
         </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.pax.exam.feature</artifactId>
+            <version>${org.wso2.carbon.pax.exam.feature.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.c5.sample.feature</artifactId>
+            <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>org.wso2.carbon.c5.extending.feature</artifactId>
+            <version>${org.wso2.carbon.c5.extending.feature.version}</version>
+            <type>zip</type>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -168,6 +188,19 @@
                                     <id>org.wso2.carbon.utils.feature</id>
                                     <version>${carbon.utils.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.pax.exam.feature</id>
+                                    <version>${org.wso2.carbon.pax.exam.feature.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.c5.sample.feature</id>
+                                    <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.c5.extending.feature</id>
+                                    <version>${org.wso2.carbon.c5.extending.feature.version}
+                                    </version>
+                                </feature>
                             </features>
                         </configuration>
                     </execution>
@@ -185,7 +218,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>materialize-product</id>
+                        <id>materialize-product1</id>
                         <phase>package</phase>
                         <goals>
                             <goal>generate-runtime</goal>
@@ -194,6 +227,42 @@
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
                             <targetPath>file:${basedir}/target/WSO2Carbon/wso2</targetPath>
                             <runtime>default</runtime>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>materialize-product2</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>generate-runtime</goal>
+                        </goals>
+                        <configuration>
+                            <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
+                            <targetPath>file:${basedir}/target/WSO2Carbon/wso2</targetPath>
+                            <runtime>runtime1</runtime>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>materialize-product3</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>generate-runtime</goal>
+                        </goals>
+                        <configuration>
+                            <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
+                            <targetPath>file:${basedir}/target/WSO2Carbon/wso2</targetPath>
+                            <runtime>runtime2</runtime>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>materialize-product4</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>generate-runtime</goal>
+                        </goals>
+                        <configuration>
+                            <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
+                            <targetPath>file:${basedir}/target/WSO2Carbon/wso2</targetPath>
+                            <runtime>runtime3</runtime>
                         </configuration>
                     </execution>
                     <execution>
@@ -227,6 +296,107 @@
                             </features>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>feature-installation1</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>install</goal>
+                        </goals>
+                        <configuration>
+                            <runtime>runtime1</runtime>
+                            <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
+                            <destination>${basedir}/target/WSO2Carbon/wso2</destination>
+                            <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
+                            <features>
+                                <feature>
+                                    <id>org.wso2.carbon.server.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.runtime.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.osgi.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.secvault.tools.feature.group</id>
+                                    <version>${carbon.securevault.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.pax.exam.feature.group</id>
+                                    <version>${org.wso2.carbon.pax.exam.feature.version}</version>
+                                </feature>
+                            </features>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>feature-installation2</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>install</goal>
+                        </goals>
+                        <configuration>
+                            <runtime>runtime2</runtime>
+                            <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
+                            <destination>${basedir}/target/WSO2Carbon/wso2</destination>
+                            <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
+                            <features>
+                                <feature>
+                                    <id>org.wso2.carbon.server.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.runtime.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.osgi.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.secvault.tools.feature.group</id>
+                                    <version>${carbon.securevault.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.c5.sample.feature.group</id>
+                                    <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+                                </feature>
+                            </features>
+                        </configuration>
+                    </execution>
+                    <!-- <execution>
+                         <id>feature-installation3</id>
+                         <phase>package</phase>
+                         <goals>
+                             <goal>install</goal>
+                         </goals>
+                         <configuration>
+                             <runtime>runtime3</runtime>
+                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
+                             <destination>${basedir}/target/WSO2Carbon/wso2</destination>
+                             <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
+                             <features>
+                                 <feature>
+                                     <id>org.wso2.carbon.server.feature.group</id>
+                                     <version>${carbon.kernel.version}</version>
+                                 </feature>
+                                 <feature>
+                                     <id>org.wso2.carbon.runtime.feature.group</id>
+                                     <version>${carbon.kernel.version}</version>
+                                 </feature>
+                                 <feature>
+                                     <id>org.wso2.carbon.osgi.feature.group</id>
+                                     <version>${carbon.kernel.version}</version>
+                                 </feature>
+                                 <feature>
+                                     <id>org.wso2.carbon.secvault.tools.feature.group</id>
+                                     <version>${carbon.securevault.version}</version>
+                                 </feature>
+                             </features>
+                         </configuration>
+                     </execution>-->
                 </executions>
             </plugin>
             <plugin>
@@ -238,7 +408,7 @@
                         <configuration>
                             <tasks>
                                 <replace dir="target/WSO2Carbon" token="false" value="true">
-                                    <include name="**/bundles.info" />
+                                    <include name="**/bundles.info"/>
                                 </replace>
                             </tasks>
                         </configuration>
@@ -251,15 +421,15 @@
                         <phase>install</phase>
                         <configuration>
                             <target>
-                                <delete dir="target/archive-tmp" />
-                                <delete dir="target/dependency-maven-plugin-markers" />
-                                <delete dir="target/org.eclipse.equinox.executable-3.5.0.v20110530-7P7NFUFFLWUl76mart" />
-                                <delete dir="target/p2-repo" />
+                                <delete dir="target/archive-tmp"/>
+                                <delete dir="target/dependency-maven-plugin-markers"/>
+                                <delete dir="target/org.eclipse.equinox.executable-3.5.0.v20110530-7P7NFUFFLWUl76mart"/>
+                                <delete dir="target/p2-repo"/>
                                 <!-- Figure out a way to delete tmp.* files -->
-                                <delete file="target/tmp" />
-                                <delete dir="target/WSO2Carbon" />
-                                <delete dir="target/antrun" />
-                                <delete dir="target/director" />
+                                <delete file="target/tmp"/>
+                                <delete dir="target/WSO2Carbon"/>
+                                <delete dir="target/antrun"/>
+                                <delete dir="target/director"/>
                             </target>
                         </configuration>
                         <goals>
@@ -301,4 +471,11 @@
             </plugin>
         </plugins>
     </build>
+    <properties>
+        <org.wso2.carbon.pax.exam.feature.version>5.2.0.0</org.wso2.carbon.pax.exam.feature.version>
+        <org.wso2.carbon.c5.sample.feature.version>5.2.0.0
+        </org.wso2.carbon.c5.sample.feature.version>
+        <org.wso2.carbon.c5.extending.feature.version>5.2.0.0
+        </org.wso2.carbon.c5.extending.feature.version>
+    </properties>
 </project>
