@@ -17,7 +17,7 @@
  -->
 <assembly>
     <includeBaseDirectory>true</includeBaseDirectory>
-    <baseDirectory>wso2carbon-kernel-test-${carbon.kernel.version}</baseDirectory>
+    <baseDirectory>c5-custom-product-${c5-custom-product-update.version}</baseDirectory>
     <id>carbon</id>
     <formats>
         <format>zip</format>
@@ -65,6 +65,24 @@
         <file>
             <source>carbon-home/conf/deployment.yaml</source>
             <outputDirectory>conf/default/</outputDirectory>
+            <fileMode>644</fileMode>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>carbon-home/conf/deployment.yaml</source>
+            <outputDirectory>conf/runtime1/</outputDirectory>
+            <fileMode>644</fileMode>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>carbon-home/conf/deployment.yaml</source>
+            <outputDirectory>conf/runtime2/</outputDirectory>
+            <fileMode>644</fileMode>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>carbon-home/conf/deployment.yaml</source>
+            <outputDirectory>conf/runtime3/</outputDirectory>
             <fileMode>644</fileMode>
             <filtered>true</filtered>
         </file>

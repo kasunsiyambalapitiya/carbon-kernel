@@ -26,6 +26,11 @@
     <artifactId>carbon-kernel</artifactId>
     <packaging>pom</packaging>
     <version>5.2.0-alpha</version>
+    <modules>
+        <module>sample.bundle1</module>
+        <module>sample.bundle2</module>
+        <module>sample.bundle3</module>
+    </modules>
     <name>WSO2 Carbon Kernel - Aggregate Pom</name>
     <description>WSO2 Carbon Kernel Aggregate Pom</description>
     <url>http://wso2.com</url>
