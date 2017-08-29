@@ -24,7 +24,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>wso2carbon-kernel-test</artifactId>
+    <artifactId>c5-custom-product</artifactId>
     <name>WSO2 Carbon Kernel - Test - Distribution</name>
     <packaging>pom</packaging>
 
@@ -419,7 +419,7 @@
                     <descriptors>
                         <descriptor>${basedir}/src/assembly/bin.xml</descriptor>
                     </descriptors>
-                    <finalName>c5-custom-product-test-${carbon.kernel.version}</finalName>
+                    <finalName>c5-custom-product-${carbon.kernel.version}</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
                 <executions>
