@@ -22,16 +22,19 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
 
 import static org.junit.Assert.assertEquals;
 
 /**
  * Created by kasun on 9/26/17.
  */
+
 public class CarbonBaseUtilsTest {
     private static final Logger logger = Logger.getLogger(CarbonBaseUtilsTest.class);
 
@@ -88,6 +91,30 @@ public class CarbonBaseUtilsTest {
     @Test
     public void testGetCarbonHome() {
         System.setProperty(CarbonBaseConstants.CARBON_HOME, "../wso2am-2.1.0");
-        assertEquals("Must provide the carbon home ","../wso2am-2.1.0",CarbonBaseUtils.getCarbonHome());
+        assertEquals("Must provide the carbon home ", "../wso2am-2.1.0", CarbonBaseUtils.getCarbonHome());
     }
+
+    @Test
+    public void testCheckSecurityWithClasses() {
+        String mypath = Paths.get(".").toAbsolutePath().normalize().toString();
+        System.setProperty("java.security.policy", Paths.get("src/test/resources").toString()+"/testPolicy.policy");
+        System.setSecurityManager(new SecurityManager());
+        List<String> allowedClasses = Arrays.asList("org.junit.runners.model.FrameworkMethod$1.runReflectiveCall", "org.wso2.carbon.base" +
+                        ".CarbonBaseUtils.checkSecurity", "org.junit.internal.runners.statements.InvokeMethod.evaluate",
+                "org.junit.runner.JUnitCore.run", "org.junit.runners.ParentRunner.run");
+        CarbonBaseUtils.checkSecurity(allowedClasses);
+       /* allowedClasses.add("sun.reflect.NativeMethodAccessorImpl");
+        CarbonBaseUtils.checkSecurity(allowedClasses);*/
+        System.clearProperty("java.security.policy");
+
+    }
+
+/*
+    @Test
+    public void testCheckSecurityWithMethods()
+*/
+
+
 }
+
+

@@ -1,0 +1,7 @@
+/* AUTOMATICALLY GENERATED ON Wed Sep 27 20:02:07 IST 2017*/
+/* DO NOT EDIT */
+
+grant {
+  permission java.lang.management.ManagementPermission "control";
+};
+
