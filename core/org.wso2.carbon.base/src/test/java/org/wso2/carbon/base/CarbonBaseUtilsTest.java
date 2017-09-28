@@ -19,6 +19,8 @@
 package org.wso2.carbon.base;
 
 import org.apache.log4j.Logger;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
@@ -38,6 +40,18 @@ import static org.junit.Assert.assertEquals;
 public class CarbonBaseUtilsTest {
     private static final Logger logger = Logger.getLogger(CarbonBaseUtilsTest.class);
 
+    @BeforeClass
+
+    public static void setSecurityManager() {
+        System.setProperty("java.security.policy", Paths.get("src/test/resources").toString() + "/testPolicy.policy");
+        System.setSecurityManager(new SecurityManager());
+    }
+
+    @AfterClass
+    public static void clearSecurityManager(){
+        System.clearProperty("java.security.policy");
+
+    }
 
     @Test
     public void testGetCarbonConfigDirPath() throws ClassNotFoundException, IllegalAccessException {
@@ -96,23 +110,26 @@ public class CarbonBaseUtilsTest {
 
     @Test
     public void testCheckSecurityWithClasses() {
-        String mypath = Paths.get(".").toAbsolutePath().normalize().toString();
-        System.setProperty("java.security.policy", Paths.get("src/test/resources").toString()+"/testPolicy.policy");
-        System.setSecurityManager(new SecurityManager());
+
         List<String> allowedClasses = Arrays.asList("org.junit.runners.model.FrameworkMethod$1.runReflectiveCall", "org.wso2.carbon.base" +
                         ".CarbonBaseUtils.checkSecurity", "org.junit.internal.runners.statements.InvokeMethod.evaluate",
                 "org.junit.runner.JUnitCore.run", "org.junit.runners.ParentRunner.run");
         CarbonBaseUtils.checkSecurity(allowedClasses);
-       /* allowedClasses.add("sun.reflect.NativeMethodAccessorImpl");
+        /*allowedClasses.add("sun.reflect.NativeMethodAccessorImpl");
         CarbonBaseUtils.checkSecurity(allowedClasses);*/
-        System.clearProperty("java.security.policy");
 
     }
 
-/*
     @Test
-    public void testCheckSecurityWithMethods()
-*/
+    public void testCheckSecurityWithMethods(){
+        Map<String,String> allowedMethods= new HashMap<>();
+        allowedMethods.put("sun.reflect.NativeMethodAccessorImpl","invoke");
+        allowedMethods.put("sun.reflect.DelegatingMethodAccessorImpl","invoke");
+        allowedMethods.put("java.lang.reflect.Method","invoke");
+        allowedMethods.put("org.junit.internal.runners.statements.InvokeMethod","evaluate");
+
+        CarbonBaseUtils.checkSecurity(allowedMethods);
+    }
 
 
 }
