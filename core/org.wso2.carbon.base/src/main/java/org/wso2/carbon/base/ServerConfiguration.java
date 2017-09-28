@@ -21,21 +21,33 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.xerces.impl.Constants;
 import org.apache.xerces.util.SecurityManager;
-import org.wso2.carbon.base.ServerConfigurationException;
+import org.w3c.dom.Element;
 import org.wso2.carbon.base.api.ServerConfigurationService;
+import org.wso2.carbon.securevault.SecretManagerInitializer;
 import org.wso2.securevault.SecretResolver;
 import org.wso2.securevault.SecretResolverFactory;
-import org.w3c.dom.Element;
-import org.wso2.carbon.securevault.SecretManagerInitializer;
 
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+import java.util.StringTokenizer;
 
 /**
  * This class stores the configuration of the Carbon Server.
@@ -143,7 +155,6 @@ public class ServerConfiguration implements ServerConfigurationService {
 			throw new ServerConfigurationException(e);
 		}
 	}
-
 	/**
 	 * This initializes the server configuration. This method should only be
 	 * called once, for successive calls, it will be checked.

@@ -18,14 +18,13 @@
 
 package org.wso2.carbon.base;
 
-import org.apache.commons.io.IOUtils;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.net.URL;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -34,25 +33,47 @@ import static org.junit.Assert.assertTrue;
  * Created by kasun on 9/26/17.
  */
 public class ServerConfigurationTest {
+    private static ServerConfiguration carbonServerConfiguration;
+
+    @BeforeClass
+    public static void createInstance() {
+        carbonServerConfiguration = ServerConfiguration.getInstance();
+    }
+
+    @Before
+    public void setIsInitializedToFalse() throws NoSuchFieldException, IllegalAccessException {
+        Field isInitializedField = ServerConfiguration.class.getDeclaredField("isInitialized");
+        isInitializedField.setAccessible(true);
+        isInitializedField.set(carbonServerConfiguration, false);
+    }
 
     @Test
     public void testInit() throws ServerConfigurationException, NoSuchFieldException, IllegalAccessException {
-        ServerConfiguration carbonServerConfiguration = ServerConfiguration.getInstance();
-
-        assertFalse(getIsInitialized(carbonServerConfiguration,"isInitialized"));
-        ClassLoader classLoader = getClass().getClassLoader();
+        assertFalse(getIsInitialized(carbonServerConfiguration, "isInitialized"));
         InputStream inputStream = readFile("carbon.xml");
         carbonServerConfiguration.forceInit(inputStream);
-        assertTrue(getIsInitialized(carbonServerConfiguration,"isInitialized"));
+        assertTrue(getIsInitialized(carbonServerConfiguration, "isInitialized"));
     }
 
-    public boolean getIsInitialized(ServerConfiguration carbonServerConfiguration,String name) throws
+    public boolean getIsInitialized(ServerConfiguration carbonServerConfiguration, String name) throws
             NoSuchFieldException, IllegalAccessException {
         boolean isInitialized;
         Field isInitializedField = ServerConfiguration.class.getDeclaredField(name);
         isInitializedField.setAccessible(true);
         isInitialized = (boolean) isInitializedField.get(carbonServerConfiguration);
         return isInitialized;
+    }
+
+    @Test
+    public void testInitWithLocationOfXMLConfig() throws NoSuchFieldException, IllegalAccessException, ServerConfigurationException {
+        assertFalse(getIsInitialized(carbonServerConfiguration, "isInitialized"));
+        URL resourceURL = CarbonBaseUtilsTest.class.getClassLoader().getResource("");
+        String resourcePath = null;
+        if (resourceURL != null) {
+            resourcePath = resourceURL.getPath();
+            resourcePath = resourcePath + "carbon.xml";
+        }
+        carbonServerConfiguration.init(resourcePath);
     }
 
 
@@ -66,7 +87,6 @@ public class ServerConfigurationTest {
         InputStream inputStream;
         ClassLoader classLoader = getClass().getClassLoader();
         inputStream = classLoader.getResourceAsStream(path);
-
         return inputStream;
     }
 }

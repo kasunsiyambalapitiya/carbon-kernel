@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-import java.nio.file.Paths;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -43,12 +43,20 @@ public class CarbonBaseUtilsTest {
     @BeforeClass
 
     public static void setSecurityManager() {
-        System.setProperty("java.security.policy", Paths.get("src/test/resources").toString() + "/testPolicy.policy");
-        System.setSecurityManager(new SecurityManager());
+        URL resourceURL = CarbonBaseUtilsTest.class.getClassLoader().getResource("");
+        if (resourceURL != null) {
+            String resourcePath = resourceURL.getPath();
+            resourcePath = resourcePath + "policy-test.policy";
+            System.setProperty("java.security.policy", resourcePath);
+            System.setSecurityManager(new SecurityManager());
+           /* System.setProperty("java.security.policy", Paths.get("src/test/resources").toString() + "/testPolicy.policy");
+            System.setSecurityManager(new SecurityManager());*/
+        }
     }
 
+
     @AfterClass
-    public static void clearSecurityManager(){
+    public static void clearSecurityManager() {
         System.clearProperty("java.security.policy");
 
     }
@@ -115,18 +123,15 @@ public class CarbonBaseUtilsTest {
                         ".CarbonBaseUtils.checkSecurity", "org.junit.internal.runners.statements.InvokeMethod.evaluate",
                 "org.junit.runner.JUnitCore.run", "org.junit.runners.ParentRunner.run");
         CarbonBaseUtils.checkSecurity(allowedClasses);
-        /*allowedClasses.add("sun.reflect.NativeMethodAccessorImpl");
-        CarbonBaseUtils.checkSecurity(allowedClasses);*/
-
     }
 
     @Test
-    public void testCheckSecurityWithMethods(){
-        Map<String,String> allowedMethods= new HashMap<>();
-        allowedMethods.put("sun.reflect.NativeMethodAccessorImpl","invoke");
-        allowedMethods.put("sun.reflect.DelegatingMethodAccessorImpl","invoke");
-        allowedMethods.put("java.lang.reflect.Method","invoke");
-        allowedMethods.put("org.junit.internal.runners.statements.InvokeMethod","evaluate");
+    public void testCheckSecurityWithMethods() {
+        Map<String, String> allowedMethods = new HashMap<>();
+        allowedMethods.put("sun.reflect.NativeMethodAccessorImpl", "invoke");
+        allowedMethods.put("sun.reflect.DelegatingMethodAccessorImpl", "invoke");
+        allowedMethods.put("java.lang.reflect.Method", "invoke");
+        allowedMethods.put("org.junit.internal.runners.statements.InvokeMethod", "evaluate");
 
         CarbonBaseUtils.checkSecurity(allowedMethods);
     }
