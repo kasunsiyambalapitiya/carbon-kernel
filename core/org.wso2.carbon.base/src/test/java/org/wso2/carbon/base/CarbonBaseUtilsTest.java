@@ -18,10 +18,9 @@
 
 package org.wso2.carbon.base;
 
-import org.apache.log4j.Logger;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -31,39 +30,33 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 /**
- * Created by kasun on 9/26/17.
+ * Test class for CarbonBaseUtil related methods with a correct sec policy.
  */
-
 public class CarbonBaseUtilsTest {
-    private static final Logger logger = Logger.getLogger(CarbonBaseUtilsTest.class);
 
     @BeforeClass
-
-    public static void setSecurityManager() {
+    public void setSecurityManager() {
         URL resourceURL = CarbonBaseUtilsTest.class.getClassLoader().getResource("");
         if (resourceURL != null) {
             String resourcePath = resourceURL.getPath();
             resourcePath = resourcePath + "policy-test.policy";
             System.setProperty("java.security.policy", resourcePath);
             System.setSecurityManager(new SecurityManager());
-           /* System.setProperty("java.security.policy", Paths.get("src/test/resources").toString() + "/testPolicy.policy");
-            System.setSecurityManager(new SecurityManager());*/
         }
     }
 
-
     @AfterClass
-    public static void clearSecurityManager() {
+    public void clearSecurityManager() {
         System.clearProperty("java.security.policy");
-
     }
 
-    @Test
-    public void testGetCarbonConfigDirPath() throws ClassNotFoundException, IllegalAccessException {
-        logger.debug("setting env variables for testing getCarbonConfigDirPath() in CarbonBaseUtils");
+    @Test(groups = {"org.wso2.carbon.base"})
+    public void testGetCarbonConfigDirPath() throws ClassNotFoundException, IllegalAccessException,
+            NoSuchFieldException {
+        //setting env variables for testing getCarbonConfigDirPath() in CarbonBaseUtils
         Map<String, String> newEnv = new HashMap<>();
         newEnv.put(CarbonBaseConstants.CARBON_CONFIG_DIR_PATH_ENV, "../wso2am-2.1.0/repository/conf");
         try {
@@ -72,7 +65,8 @@ public class CarbonBaseUtilsTest {
             theEnvironmentField.setAccessible(true);
             Map<String, String> env = (Map<String, String>) theEnvironmentField.get(null);
             env.putAll(newEnv);
-            Field theCaseInsensitiveEnvironmentField = processEnvironmentClass.getDeclaredField("theCaseInsensitiveEnvironment");
+            Field theCaseInsensitiveEnvironmentField = processEnvironmentClass.getDeclaredField
+                    ("theCaseInsensitiveEnvironment");
             theCaseInsensitiveEnvironmentField.setAccessible(true);
             Map<String, String> cienv = (Map<String, String>) theCaseInsensitiveEnvironmentField.get(null);
             cienv.putAll(newEnv);
@@ -82,11 +76,7 @@ public class CarbonBaseUtilsTest {
             for (Class cl : classes) {
                 if ("java.util.Collections$UnmodifiableMap".equals(cl.getName())) {
                     Field field = null;
-                    try {
-                        field = cl.getDeclaredField("m");
-                    } catch (NoSuchFieldException e1) {
-                        logger.error(e.getMessage());
-                    }
+                    field = cl.getDeclaredField("m");
                     field.setAccessible(true);
                     Object obj = field.get(env);
                     Map<String, String> map = (Map<String, String>) obj;
@@ -95,48 +85,40 @@ public class CarbonBaseUtilsTest {
                 }
             }
         }
-        logger.debug("setting env variables done for testing getCarbonConfigDirPath() in CarbonBaseUtils");
-        assertEquals("Must provide the location where carbon.xml resides", "../wso2am-2.1.0/repository/conf"
-                , CarbonBaseUtils.getCarbonConfigDirPath());
-
-
+        //setting env variables done for testing getCarbonConfigDirPath() in CarbonBaseUtils
+        assertEquals(CarbonBaseUtils.getCarbonConfigDirPath(),
+                "../wso2am-2.1.0/repository/conf", "Must provide the location where carbon.xml resides");
     }
 
-    @Test
+    @Test(groups = {"org.wso2.carbon.base"})
     public void testGetServerXML() {
         System.setProperty(CarbonBaseConstants.CARBON_CONFIG_DIR_PATH, "../wso2am-2.1.0/repository/conf");
         String absoluteLocation = CarbonBaseUtils.getServerXml();
-        assertEquals("Must match the formed absoluteLocation of carbon.xml",
-                "../wso2am-2.1.0/repository/conf/carbon" + ".xml", absoluteLocation);
+        assertEquals(absoluteLocation, "../wso2am-2.1.0/repository/conf/carbon" + ".xml", "Must match the formed " +
+                "absoluteLocation of carbon.xml");
     }
 
-    @Test
+    @Test(groups = {"org.wso2.carbon.base"})
     public void testGetCarbonHome() {
         System.setProperty(CarbonBaseConstants.CARBON_HOME, "../wso2am-2.1.0");
-        assertEquals("Must provide the carbon home ", "../wso2am-2.1.0", CarbonBaseUtils.getCarbonHome());
+        assertEquals(CarbonBaseUtils.getCarbonHome(), "../wso2am-2.1.0", "Must provide the carbon home ");
     }
 
-    @Test(expected = Test.None.class /*no exception is expected*/)
+    @Test(groups = {"org.wso2.carbon.base"})
     public void testCheckSecurityWithClasses() {
-
-        List<String> allowedClasses = Arrays.asList("org.junit.runners.model.FrameworkMethod$1.runReflectiveCall", "org.wso2.carbon.base" +
-                        ".CarbonBaseUtils.checkSecurity", "org.junit.internal.runners.statements.InvokeMethod.evaluate",
-                "org.junit.runner.JUnitCore.run", "org.junit.runners.ParentRunner.run");
+        List<String> allowedClasses = Arrays.asList("org.junit.runners.model.FrameworkMethod$1.runReflectiveCall",
+                "org.wso2.carbon.base.CarbonBaseUtils.checkSecurity", "org.junit.internal.runners.statements" +
+                        ".InvokeMethod.evaluate", "org.junit.runner.JUnitCore.run", "org.junit.runners.ParentRunner.run");
         CarbonBaseUtils.checkSecurity(allowedClasses);
     }
 
-    @Test(expected= Test.None.class /*no exception is expected*/)
+    @Test(groups = {"org.wso2.carbon.base"})
     public void testCheckSecurityWithMethods() {
         Map<String, String> allowedMethods = new HashMap<>();
         allowedMethods.put("sun.reflect.NativeMethodAccessorImpl", "invoke");
         allowedMethods.put("sun.reflect.DelegatingMethodAccessorImpl", "invoke");
         allowedMethods.put("java.lang.reflect.Method", "invoke");
         allowedMethods.put("org.junit.internal.runners.statements.InvokeMethod", "evaluate");
-
         CarbonBaseUtils.checkSecurity(allowedMethods);
     }
-
-
 }
-
-
