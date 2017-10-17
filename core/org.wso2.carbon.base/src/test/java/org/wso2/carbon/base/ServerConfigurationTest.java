@@ -87,13 +87,13 @@ public class ServerConfigurationTest {
     @Test(groups = {"org.wso2.carbon.base"})
     public void testSetConfigurationProperty() throws Exception {
         ServerConfiguration.getInstance().setConfigurationProperty("ServerKey", "AM");
-        //need to update the test after issue #1560 is fixed
+        //TODO need to update the test after issue #1560 is fixed
     }
 
     @Test(groups = {"org.wso2.carbon.base"})
     public void testOverrideConfigurationProperty() {
         ServerConfiguration.getInstance().overrideConfigurationProperty("RegistryHttpPort", "9764");
-        //need to update the test after issue #1560 is fixed
+        //TODO need to update the test after issue #1560 is fixed
     }
 
     @Test(groups = {"org.wso2.carbon.base"})
@@ -168,18 +168,14 @@ public class ServerConfigurationTest {
      * @return an inputstream containing the contents of the given file
      */
     private static InputStream readFile(String path) {
-        InputStream inputStream;
         ClassLoader classLoader = ServerConfigurationTest.class.getClassLoader();
-        inputStream = classLoader.getResourceAsStream(path);
-        return inputStream;
+        return classLoader.getResourceAsStream(path);
     }
 
     private static boolean getIsInitialized(ServerConfiguration carbonServerConfiguration, String name) throws
             NoSuchFieldException, IllegalAccessException {
-        boolean isInitialized;
         Field isInitializedField = ServerConfiguration.class.getDeclaredField(name);
         isInitializedField.setAccessible(true);
-        isInitialized = (boolean) isInitializedField.get(carbonServerConfiguration);
-        return isInitialized;
+        return (boolean) isInitializedField.get(carbonServerConfiguration);
     }
 }
