@@ -37,6 +37,12 @@ import static org.testng.Assert.assertEquals;
  */
 public class CarbonBaseUtilsTest {
 
+    private static final String PROCESS_ENVIRONMENT = "java.lang.ProcessEnvironment";
+    private static final String THE_ENVIRONMENT_FILED = "theEnvironment";
+    private static final String THE_CASE_INSENSITIVE_ENVIRONMENT = "theCaseInsensitiveEnvironment";
+    private static final String COLLECTIONS_UNMODIFIABLE_MAP = "java.util.Collections$UnmodifiableMap";
+    private static final String FIELD_M = "m";
+
     @BeforeClass
     public void setSecurityManager() {
         URL resourceURL = CarbonBaseUtilsTest.class.getClassLoader().getResource("");
@@ -57,51 +63,23 @@ public class CarbonBaseUtilsTest {
     public void testGetCarbonConfigDirPath() throws ClassNotFoundException, IllegalAccessException,
             NoSuchFieldException {
         //setting env variables for testing getCarbonConfigDirPath() in CarbonBaseUtils
-        Map<String, String> newEnv = new HashMap<>();
-        newEnv.put(CarbonBaseConstants.CARBON_CONFIG_DIR_PATH_ENV, "../wso2am-2.1.0/repository/conf");
-        try {
-            Class<?> processEnvironmentClass = Class.forName("java.lang.ProcessEnvironment");
-            Field theEnvironmentField = processEnvironmentClass.getDeclaredField("theEnvironment");
-            theEnvironmentField.setAccessible(true);
-            Map<String, String> env = (Map<String, String>) theEnvironmentField.get(null);
-            env.putAll(newEnv);
-            Field theCaseInsensitiveEnvironmentField = processEnvironmentClass.getDeclaredField
-                    ("theCaseInsensitiveEnvironment");
-            theCaseInsensitiveEnvironmentField.setAccessible(true);
-            Map<String, String> cienv = (Map<String, String>) theCaseInsensitiveEnvironmentField.get(null);
-            cienv.putAll(newEnv);
-        } catch (NoSuchFieldException e) {
-            Class[] classes = Collections.class.getDeclaredClasses();
-            Map<String, String> env = System.getenv();
-            for (Class cl : classes) {
-                if ("java.util.Collections$UnmodifiableMap".equals(cl.getName())) {
-                    Field field = null;
-                    field = cl.getDeclaredField("m");
-                    field.setAccessible(true);
-                    Object obj = field.get(env);
-                    Map<String, String> map = (Map<String, String>) obj;
-                    map.clear();
-                    map.putAll(newEnv);
-                }
-            }
-        }
-        //setting env variables done for testing getCarbonConfigDirPath() in CarbonBaseUtils
+        setEnvironmentVariables(CarbonBaseConstants.CARBON_CONFIG_DIR_PATH_ENV, "/wso2am-2.1.0/repository/conf");
         assertEquals(CarbonBaseUtils.getCarbonConfigDirPath(),
-                "../wso2am-2.1.0/repository/conf", "Must provide the location where carbon.xml resides");
+                "/wso2am-2.1.0/repository/conf", "Must provide the location where carbon.xml resides");
     }
 
     @Test(groups = {"org.wso2.carbon.base"})
     public void testGetServerXML() {
-        System.setProperty(CarbonBaseConstants.CARBON_CONFIG_DIR_PATH, "../wso2am-2.1.0/repository/conf");
+        System.setProperty(CarbonBaseConstants.CARBON_CONFIG_DIR_PATH, "/wso2am-2.1.0/repository/conf");
         String absoluteLocation = CarbonBaseUtils.getServerXml();
-        assertEquals(absoluteLocation, "../wso2am-2.1.0/repository/conf/carbon" + ".xml", "Must match the formed " +
+        assertEquals(absoluteLocation, "/wso2am-2.1.0/repository/conf/carbon" + ".xml", "Must match the formed " +
                 "absoluteLocation of carbon.xml");
     }
 
     @Test(groups = {"org.wso2.carbon.base"})
     public void testGetCarbonHome() {
-        System.setProperty(CarbonBaseConstants.CARBON_HOME, "../wso2am-2.1.0");
-        assertEquals(CarbonBaseUtils.getCarbonHome(), "../wso2am-2.1.0", "Must provide the carbon home ");
+        System.setProperty(CarbonBaseConstants.CARBON_HOME, "/wso2am-2.1.0");
+        assertEquals(CarbonBaseUtils.getCarbonHome(), "/wso2am-2.1.0", "Must provide the carbon home ");
     }
 
     @Test(groups = {"org.wso2.carbon.base"})
@@ -120,5 +98,81 @@ public class CarbonBaseUtilsTest {
         allowedMethods.put("java.lang.reflect.Method", "invoke");
         allowedMethods.put("org.junit.internal.runners.statements.InvokeMethod", "evaluate");
         CarbonBaseUtils.checkSecurity(allowedMethods);
+    }
+
+    /**
+     * Set environment variable for a given key and value.
+     *
+     * @param key   Environment variable key.
+     * @param value Environment variable value.
+     */
+    public static void setEnvironmentVariables(String key, String value) throws IllegalAccessException,
+            NoSuchFieldException, ClassNotFoundException {
+        Map<String, String> newEnv = new HashMap<>();
+        newEnv.put(key, value);
+        setEnvironmentVariables(newEnv);
+    }
+
+    /**
+     * Set environment variable from given map.
+     *
+     * @param newVariables Map of variables to put into environment variables.
+     */
+    public static void setEnvironmentVariables(Map<String, String> newVariables) throws IllegalAccessException,
+            NoSuchFieldException, ClassNotFoundException {
+        Map<String, String> newEnv = new HashMap<>();
+        newEnv.putAll(System.getenv());
+        newEnv.putAll(newVariables);
+        setEnvVariables(newEnv);
+    }
+
+    /**
+     * Unset environment variable for a given key.
+     *
+     * @param key Environment variable key.
+     */
+    public static void unsetEnvironmentVariables(String key) throws IllegalAccessException, NoSuchFieldException,
+            ClassNotFoundException {
+        Map<String, String> newEnv = new HashMap<>();
+        newEnv.putAll(System.getenv());
+        newEnv.remove(key);
+        setEnvVariables(newEnv);
+    }
+
+    /**
+     * Set environment variable from given map.
+     *
+     * @param environmentVariables Map of variables to put into environment variables.
+     */
+    private static void setEnvVariables(Map<String, String> environmentVariables) throws ClassNotFoundException,
+            IllegalAccessException, NoSuchFieldException {
+        try {
+            Class<?> processEnvironmentClass = Class.forName(PROCESS_ENVIRONMENT);
+
+            Field theEnvironmentField = processEnvironmentClass.getDeclaredField(THE_ENVIRONMENT_FILED);
+            theEnvironmentField.setAccessible(true);
+            Map<String, String> env = (Map<String, String>) theEnvironmentField.get(null);
+            env.putAll(environmentVariables);
+
+            Field theCaseInsensitiveEnvironmentField = processEnvironmentClass
+                    .getDeclaredField(THE_CASE_INSENSITIVE_ENVIRONMENT);
+            theCaseInsensitiveEnvironmentField.setAccessible(true);
+            Map<String, String> caseInsensitiveEnv = (Map<String, String>) theCaseInsensitiveEnvironmentField.get(null);
+            caseInsensitiveEnv.putAll(environmentVariables);
+        } catch (NoSuchFieldException e) {
+            Class[] classes = Collections.class.getDeclaredClasses();
+            Map<String, String> env = System.getenv();
+            for (Class cl : classes) {
+                if (COLLECTIONS_UNMODIFIABLE_MAP.equals(cl.getName())) {
+                    Field field = null;
+                    field = cl.getDeclaredField(FIELD_M);
+                    field.setAccessible(true);
+                    Object obj = field.get(env);
+                    Map<String, String> map = (Map<String, String>) obj;
+                    map.clear();
+                    map.putAll(environmentVariables);
+                }
+            }
+        }
     }
 }

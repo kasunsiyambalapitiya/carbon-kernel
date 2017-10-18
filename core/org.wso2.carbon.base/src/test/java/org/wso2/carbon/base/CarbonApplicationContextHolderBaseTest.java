@@ -27,7 +27,8 @@ import static org.testng.Assert.assertEquals;
  */
 public class CarbonApplicationContextHolderBaseTest {
 
-    @Test(groups = {"org.wso2.carbon.base"})
+    @Test(groups = {"org.wso2.carbon.base"}, description = "Test whether the applicationName is set to \"\" " +
+            "after starting the application flow and the same is returned after ending the application flow")
     public void testStartApplicationFlow() throws Exception {
         CarbonApplicationContextHolderBase.getCurrentCarbonAppContextHolderBase().startApplicationFlow();
         String expectedApplicationName1 = "";
