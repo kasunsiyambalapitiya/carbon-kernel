@@ -98,7 +98,7 @@
 
     <build>
         <plugins>
-            <plugin>
+          <!--  <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <inherited>false</inherited>
@@ -122,7 +122,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
             <plugin>
                 <groupId>org.wso2.carbon.maven</groupId>
                 <artifactId>carbon-feature-plugin</artifactId>
@@ -200,7 +200,7 @@
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
                         </configuration>
                     </execution>
-                    <execution>
+                 <!--   <execution>
                         <id>materialize-product</id>
                         <phase>package</phase>
                         <goals>
@@ -208,7 +208,7 @@
                         </goals>
                         <configuration>
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                            <targetPath>file:${basedir}/c5-custom-product-${carbon.kernel.version}/wso2
+                            <targetPath>file:${basedir}/c5-custom-product-${c5-custom-product.version}/wso2
                             </targetPath>
                             <runtime>default</runtime>
                         </configuration>
@@ -221,7 +221,7 @@
                         </goals>
                         <configuration>
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                            <targetPath>file:${basedir}/c5-custom-product-${carbon.kernel.version}/wso2
+                            <targetPath>file:${basedir}/c5-custom-product-${c5-custom-product.version}/wso2
                             </targetPath>
                             <runtime>runtime1</runtime>
                         </configuration>
@@ -234,7 +234,7 @@
                         </goals>
                         <configuration>
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                            <targetPath>file:${basedir}/c5-custom-product-${carbon.kernel.version}/wso2
+                            <targetPath>file:${basedir}/c5-custom-product-${c5-custom-product.version}/wso2
                             </targetPath>
                             <runtime>runtime2</runtime>
                         </configuration>
@@ -247,12 +247,12 @@
                         </goals>
                         <configuration>
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                            <targetPath>file:${basedir}/c5-custom-product-${carbon.kernel.version}/wso2
+                            <targetPath>file:${basedir}/c5-custom-product-${c5-custom-product.version}/wso2
                             </targetPath>
                             <runtime>runtime3</runtime>
                         </configuration>
-                    </execution>
-                    <!-- <execution>
+                    </execution>-->
+                   <!-- <execution>
                          <id>feature-installation</id>
                          <phase>package</phase>
                          <goals>
@@ -261,7 +261,7 @@
                          <configuration>
                              <runtime>default</runtime>
                              <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                             <destination>${basedir}/c5-custom-product-${carbon.kernel.version}/wso2</destination>
+                             <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
                              <deleteOldRuntimeFiles>false</deleteOldRuntimeFiles>
                              <features>
                                  <feature>
@@ -282,7 +282,7 @@
                                  </feature>
                              </features>
                          </configuration>
-                     </execution>
+                     </execution>-->
                      <execution>
                          <id>feature-installation1</id>
                          <phase>package</phase>
@@ -292,10 +292,10 @@
                          <configuration>
                              <runtime>runtime1</runtime>
                              <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                             <destination>${basedir}/c5-custom-product-${carbon.kernel.version}/wso2</destination>
+                             <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
                              <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
                              <features>
-                                 <feature>
+                                 <!--<feature>
                                      <id>org.wso2.carbon.server.feature.group</id>
                                      <version>${carbon.kernel.version}</version>
                                  </feature>
@@ -310,7 +310,7 @@
                                  <feature>
                                      <id>org.wso2.carbon.secvault.tools.feature.group</id>
                                      <version>${carbon.securevault.version}</version>
-                                 </feature>
+                                 </feature>-->
                                  <feature>
                                      <id>org.wso2.carbon.pax.exam.feature.group</id>
                                      <version>${org.wso2.carbon.pax.exam.feature.version}</version>
@@ -318,7 +318,7 @@
                              </features>
                          </configuration>
                      </execution>
-                     <execution>
+                    <!-- <execution>
                          <id>feature-installation2</id>
                          <phase>package</phase>
                          <goals>
@@ -327,7 +327,7 @@
                          <configuration>
                              <runtime>runtime2</runtime>
                              <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                             <destination>${basedir}/c5-custom-product-${carbon.kernel.version}/wso2</destination>
+                             <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
                              <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
                              <features>
                                  <feature>
@@ -362,7 +362,7 @@
                          <configuration>
                              <runtime>runtime3</runtime>
                              <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                             <destination>${basedir}/c5-custom-product-${carbon.kernel.version}/wso2</destination>
+                             <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
                              <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
                              <features>
                                  <feature>
@@ -384,6 +384,7 @@
                              </features>
                          </configuration>
                      </execution>-->
+
                     <!--Uninstalling a feature used in multiple runtimes-->
                     <!--<execution>
                         <id>feature-uninstallation1</id>
@@ -393,7 +394,7 @@
                         </goals>
                         <configuration>
                             <runtime>default</runtime>
-                            <destination>${basedir}/c5-custom-product-${carbon.kernel.version}/wso2</destination>
+                            <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
                             <features>
                                 <feature>
                                     <id>org.wso2.carbon.c5.sample.feature.group</id>
@@ -402,30 +403,47 @@
                             </features>
                         </configuration>
                     </execution>-->
-                    <execution>
+                  <!--  <execution>
                         <id>feature-uninstallation2</id>
                         <phase>package</phase>
                         <goals>
                             <goal>uninstall</goal>
                         </goals>
                         <configuration>
-                            <runtime>runtime2</runtime>
-                            <destination>${basedir}/c5-custom-product-${carbon.kernel.version}/wso2</destination>
+                            <runtime>runtime1</runtime>
+                            <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
                             <features>
                                 <feature>
-                                    <id>org.wso2.carbon.c5.sample.feature.group</id>
-                                    <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+                                    <id>org.wso2.carbon.pax.exam.feature.group</id>
+                                    <version>${org.wso2.carbon.pax.exam.feature.version}</version>
                                 </feature>
                             </features>
                         </configuration>
-                    </execution>
+                    </execution>-->
+                     <!-- <execution>
+                       <id>feature-uninstallation2</id>
+                       <phase>package</phase>
+                       <goals>
+                           <goal>uninstall</goal>
+                       </goals>
+                       <configuration>
+                           <runtime>runtime2</runtime>
+                           <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
+                           <features>
+                               <feature>
+                                   <id>org.wso2.carbon.c5.sample.feature.group</id>
+                                   <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+                               </feature>
+                           </features>
+                       </configuration>
+                   </execution>-->
                 </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
-                    <execution>
+                  <!--  <execution>
                         <phase>package</phase>
                         <configuration>
                             <tasks>
@@ -438,7 +456,7 @@
                         <goals>
                             <goal>run</goal>
                         </goals>
-                    </execution>
+                    </execution>-->
                     <!-- <execution>
                          <id>clean_target</id>
                          <phase>install</phase>
@@ -461,7 +479,7 @@
                      </execution>-->
                 </executions>
             </plugin>
-           <!-- <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
@@ -480,7 +498,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
@@ -491,11 +509,11 @@
         </plugins>
     </build>
     <properties>
-        <org.wso2.carbon.pax.exam.feature.version>5.2.0.0</org.wso2.carbon.pax.exam.feature.version>
-        <org.wso2.carbon.c5.sample.feature.version>5.2.0.0
+        <org.wso2.carbon.pax.exam.feature.version>5.2.0.1</org.wso2.carbon.pax.exam.feature.version>
+        <org.wso2.carbon.c5.sample.feature.version>5.2.0
         </org.wso2.carbon.c5.sample.feature.version>
         <org.wso2.carbon.c5.extending.feature.version>5.2.0.0
         </org.wso2.carbon.c5.extending.feature.version>
-        <c5-custom-product.version>5.2.0</c5-custom-product.version>
+        <c5-custom-product.version>5.3.0</c5-custom-product.version>
     </properties>
 </project>

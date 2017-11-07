@@ -24,7 +24,7 @@
     </formats>
     <fileSets>
         <fileSet>
-            <directory>wso2carbon-kernel-${carbon.kernel.version}</directory>
+            <directory>c5-custom-product-${c5-custom-product.version}</directory>
             <outputDirectory></outputDirectory>
             <fileMode>644</fileMode>
             <excludes>
@@ -40,7 +40,7 @@
         </fileSet>
 
         <fileSet>
-            <directory>wso2carbon-kernel-${carbon.kernel.version}</directory>
+            <directory>c5-custom-product-${c5-custom-product.version}</directory>
             <outputDirectory></outputDirectory>
             <includes>
                 <include>**/*.sh</include>
@@ -69,7 +69,25 @@
             <filtered>true</filtered>
         </file>
         <file>
-            <source>wso2carbon-kernel-${carbon.kernel.version}/bin/kernel-version.txt</source>
+        <source>carbon-home/conf/deployment.yaml</source>
+        <outputDirectory>conf/runtime1/</outputDirectory>
+        <fileMode>644</fileMode>
+        <filtered>true</filtered>
+    </file>
+        <file>
+            <source>carbon-home/conf/deployment.yaml</source>
+            <outputDirectory>conf/runtime2/</outputDirectory>
+            <fileMode>644</fileMode>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>carbon-home/conf/deployment.yaml</source>
+            <outputDirectory>conf/runtime3/</outputDirectory>
+            <fileMode>644</fileMode>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>c5-custom-product-${c5-custom-product.version}/bin/kernel-version.txt</source>
             <outputDirectory>bin/</outputDirectory>
             <filtered>true</filtered>
             <fileMode>644</fileMode>
