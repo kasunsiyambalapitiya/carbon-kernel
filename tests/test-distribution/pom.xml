@@ -90,39 +90,142 @@
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
-            <artifactId>c5-custom-product</artifactId>
-            <version>5.2.0-alpha</version>
+            <artifactId>sample.4.feature</artifactId>
+            <version>5.2.0</version>
             <type>zip</type>
         </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.5.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.6.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.7.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.8.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.9.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.10.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.11.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.12.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.13.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.14.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.15.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.16.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.17.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.18.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.19.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wso2.carbon</groupId>
+            <artifactId>sample.20.feature</artifactId>
+            <version>5.2.0</version>
+            <type>zip</type>
+        </dependency>
+
+        <!-- <dependency>
+             <groupId>org.wso2.carbon</groupId>
+             <artifactId>c5-custom-product</artifactId>
+             <version>5.2.0-alpha</version>
+             <type>zip</type>
+         </dependency>-->
     </dependencies>
 
     <build>
         <plugins>
-          <!--  <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <inherited>false</inherited>
-                <executions>
-                    <execution>
-                        <id>1-unpack-p2-agent-distribution</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.wso2.carbon</groupId>
-                                    <artifactId>wso2carbon-kernel</artifactId>
-                                    <type>zip</type>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>${basedir}/target</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>-->
+            <!--  <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-dependency-plugin</artifactId>
+                  <inherited>false</inherited>
+                  <executions>
+                      <execution>
+                          <id>1-unpack-p2-agent-distribution</id>
+                          <phase>test</phase>
+                          <goals>
+                              <goal>unpack</goal>
+                          </goals>
+                          <configuration>
+                              <artifactItems>
+                                  <artifactItem>
+                                      <groupId>org.wso2.carbon</groupId>
+                                      <artifactId>wso2carbon-kernel</artifactId>
+                                      <type>zip</type>
+                                      <overWrite>true</overWrite>
+                                      <outputDirectory>${basedir}/target</outputDirectory>
+                                  </artifactItem>
+                              </artifactItems>
+                          </configuration>
+                      </execution>
+                  </executions>
+              </plugin>-->
             <plugin>
                 <groupId>org.wso2.carbon.maven</groupId>
                 <artifactId>carbon-feature-plugin</artifactId>
@@ -184,6 +287,74 @@
                                     <id>org.wso2.carbon.c5.extending.feature</id>
                                     <version>${org.wso2.carbon.c5.extending.feature.version}</version>
                                 </feature>
+                                <feature>
+                                    <id>sample.4.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.5.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.6.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.7.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.8.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.9.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.10.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.11.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.12.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.13.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.14.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.15.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.16.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.17.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.18.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.19.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.20.feature</id>
+                                    <version>5.2.0</version>
+                                </feature>
                             </features>
                         </configuration>
                     </execution>
@@ -200,7 +371,7 @@
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
                         </configuration>
                     </execution>
-                 <!--   <execution>
+                    <execution>
                         <id>materialize-product</id>
                         <phase>package</phase>
                         <goals>
@@ -251,139 +422,208 @@
                             </targetPath>
                             <runtime>runtime3</runtime>
                         </configuration>
-                    </execution>-->
-                   <!-- <execution>
-                         <id>feature-installation</id>
-                         <phase>package</phase>
-                         <goals>
-                             <goal>install</goal>
-                         </goals>
-                         <configuration>
-                             <runtime>default</runtime>
-                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                             <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
-                             <deleteOldRuntimeFiles>false</deleteOldRuntimeFiles>
-                             <features>
-                                 <feature>
-                                     <id>org.wso2.carbon.server.feature.group</id>
-                                     <version>${carbon.kernel.version}</version>
-                                 </feature>
-                                 <feature>
-                                     <id>org.wso2.carbon.runtime.feature.group</id>
-                                     <version>${carbon.kernel.version}</version>
-                                 </feature>
-                                 <feature>
-                                     <id>org.wso2.carbon.osgi.feature.group</id>
-                                     <version>${carbon.kernel.version}</version>
-                                 </feature>
-                                 <feature>
-                                     <id>org.wso2.carbon.c5.sample.feature.group</id>
-                                     <version>${org.wso2.carbon.c5.sample.feature.version}</version>
-                                 </feature>
-                             </features>
-                         </configuration>
-                     </execution>-->
-                     <execution>
-                         <id>feature-installation1</id>
-                         <phase>package</phase>
-                         <goals>
-                             <goal>install</goal>
-                         </goals>
-                         <configuration>
-                             <runtime>runtime1</runtime>
-                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                             <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
-                             <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
-                             <features>
-                                 <!--<feature>
-                                     <id>org.wso2.carbon.server.feature.group</id>
-                                     <version>${carbon.kernel.version}</version>
-                                 </feature>
-                                 <feature>
-                                     <id>org.wso2.carbon.runtime.feature.group</id>
-                                     <version>${carbon.kernel.version}</version>
-                                 </feature>
-                                 <feature>
-                                     <id>org.wso2.carbon.osgi.feature.group</id>
-                                     <version>${carbon.kernel.version}</version>
-                                 </feature>
-                                 <feature>
-                                     <id>org.wso2.carbon.secvault.tools.feature.group</id>
-                                     <version>${carbon.securevault.version}</version>
-                                 </feature>-->
-                                 <feature>
-                                     <id>org.wso2.carbon.pax.exam.feature.group</id>
-                                     <version>${org.wso2.carbon.pax.exam.feature.version}</version>
-                                 </feature>
-                             </features>
-                         </configuration>
-                     </execution>
-                    <!-- <execution>
-                         <id>feature-installation2</id>
-                         <phase>package</phase>
-                         <goals>
-                             <goal>install</goal>
-                         </goals>
-                         <configuration>
-                             <runtime>runtime2</runtime>
-                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                             <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
-                             <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
-                             <features>
-                                 <feature>
-                                     <id>org.wso2.carbon.server.feature.group</id>
-                                     <version>${carbon.kernel.version}</version>
-                                 </feature>
-                                 <feature>
-                                     <id>org.wso2.carbon.runtime.feature.group</id>
-                                     <version>${carbon.kernel.version}</version>
-                                 </feature>
-                                 <feature>
-                                     <id>org.wso2.carbon.osgi.feature.group</id>
-                                     <version>${carbon.kernel.version}</version>
-                                 </feature>
-                                 <feature>
-                                     <id>org.wso2.carbon.secvault.tools.feature.group</id>
-                                     <version>${carbon.securevault.version}</version>
-                                 </feature>
-                                 <feature>
-                                     <id>org.wso2.carbon.c5.sample.feature.group</id>
-                                     <version>${org.wso2.carbon.c5.sample.feature.version}</version>
-                                 </feature>
-                             </features>
-                         </configuration>
-                     </execution>
-                     <execution>
-                         <id>feature-installation3</id>
-                         <phase>package</phase>
-                         <goals>
-                             <goal>install</goal>
-                         </goals>
-                         <configuration>
-                             <runtime>runtime3</runtime>
-                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
-                             <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
-                             <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
-                             <features>
-                                 <feature>
-                                     <id>org.wso2.carbon.server.feature.group</id>
-                                     <version>${carbon.kernel.version}</version>
-                                 </feature>
-                                 <feature>
-                                     <id>org.wso2.carbon.runtime.feature.group</id>
-                                     <version>${carbon.kernel.version}</version>
-                                 </feature>
-                                 <feature>
-                                     <id>org.wso2.carbon.osgi.feature.group</id>
-                                     <version>${carbon.kernel.version}</version>
-                                 </feature>
-                                   <feature>
-                                     <id>org.wso2.carbon.secvault.tools.feature.group</id>
-                                     <version>${carbon.securevault.version}</version>
-                                 </feature>
-                             </features>
-                         </configuration>
-                     </execution>-->
+                    </execution>
+                    <execution>
+                        <id>feature-installation</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>install</goal>
+                        </goals>
+                        <configuration>
+                            <runtime>default</runtime>
+                            <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
+                            <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
+                            <deleteOldRuntimeFiles>false</deleteOldRuntimeFiles>
+                            <features>
+                                <feature>
+                                    <id>org.wso2.carbon.server.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.runtime.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.osgi.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.c5.sample.feature.group</id>
+                                    <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.4.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.6.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.7.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                            </features>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>feature-installation1</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>install</goal>
+                        </goals>
+                        <configuration>
+                            <runtime>runtime1</runtime>
+                            <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
+                            <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
+                            <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
+                            <features>
+                                <feature>
+                                    <id>org.wso2.carbon.server.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.runtime.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.osgi.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.secvault.tools.feature.group</id>
+                                    <version>${carbon.securevault.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.pax.exam.feature.group</id>
+                                    <version>${org.wso2.carbon.pax.exam.feature.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.8.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.9.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.13.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                            </features>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>feature-installation2</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>install</goal>
+                        </goals>
+                        <configuration>
+                            <runtime>runtime2</runtime>
+                            <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
+                            <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
+                            <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
+                            <features>
+                                <feature>
+                                    <id>org.wso2.carbon.server.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.runtime.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.osgi.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.secvault.tools.feature.group</id>
+                                    <version>${carbon.securevault.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.c5.sample.feature.group</id>
+                                    <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.6.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.10.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.11.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+
+                            </features>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>feature-installation3</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>install</goal>
+                        </goals>
+                        <configuration>
+                            <runtime>runtime3</runtime>
+                            <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
+                            <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
+                            <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
+                            <features>
+                                <feature>
+                                    <id>org.wso2.carbon.server.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.runtime.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.osgi.feature.group</id>
+                                    <version>${carbon.kernel.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.secvault.tools.feature.group</id>
+                                    <version>${carbon.securevault.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.pax.exam.feature.group</id>
+                                    <version>${org.wso2.carbon.pax.exam.feature.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.c5.sample.feature.group</id>
+                                    <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>org.wso2.carbon.c5.extending.feature.group</id>
+                                    <version>${org.wso2.carbon.c5.extending.feature.version}</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.4.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.5.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.6.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.7.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                                <feature>
+                                    <id>sample.8.feature.group</id>
+                                    <version>5.2.0</version>
+                                </feature>
+                            </features>
+                        </configuration>
+                    </execution>
 
                     <!--Uninstalling a feature used in multiple runtimes-->
                     <!--<execution>
@@ -403,60 +643,60 @@
                             </features>
                         </configuration>
                     </execution>-->
-                  <!--  <execution>
-                        <id>feature-uninstallation2</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>uninstall</goal>
-                        </goals>
-                        <configuration>
-                            <runtime>runtime1</runtime>
-                            <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
-                            <features>
-                                <feature>
-                                    <id>org.wso2.carbon.pax.exam.feature.group</id>
-                                    <version>${org.wso2.carbon.pax.exam.feature.version}</version>
-                                </feature>
-                            </features>
-                        </configuration>
-                    </execution>-->
-                     <!-- <execution>
-                       <id>feature-uninstallation2</id>
-                       <phase>package</phase>
-                       <goals>
-                           <goal>uninstall</goal>
-                       </goals>
-                       <configuration>
-                           <runtime>runtime2</runtime>
-                           <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
-                           <features>
-                               <feature>
-                                   <id>org.wso2.carbon.c5.sample.feature.group</id>
-                                   <version>${org.wso2.carbon.c5.sample.feature.version}</version>
-                               </feature>
-                           </features>
-                       </configuration>
-                   </execution>-->
+                    <!--  <execution>
+                          <id>feature-uninstallation2</id>
+                          <phase>package</phase>
+                          <goals>
+                              <goal>uninstall</goal>
+                          </goals>
+                          <configuration>
+                              <runtime>runtime1</runtime>
+                              <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
+                              <features>
+                                  <feature>
+                                      <id>org.wso2.carbon.pax.exam.feature.group</id>
+                                      <version>${org.wso2.carbon.pax.exam.feature.version}</version>
+                                  </feature>
+                              </features>
+                          </configuration>
+                      </execution>-->
+                    <!-- <execution>
+                      <id>feature-uninstallation2</id>
+                      <phase>package</phase>
+                      <goals>
+                          <goal>uninstall</goal>
+                      </goals>
+                      <configuration>
+                          <runtime>runtime2</runtime>
+                          <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
+                          <features>
+                              <feature>
+                                  <id>org.wso2.carbon.c5.sample.feature.group</id>
+                                  <version>${org.wso2.carbon.c5.sample.feature.version}</version>
+                              </feature>
+                          </features>
+                      </configuration>
+                  </execution>-->
                 </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
-                  <!--  <execution>
-                        <phase>package</phase>
-                        <configuration>
-                            <tasks>
-                                <replace dir="target/wso2carbon-kernel-${carbon.kernel.version}/wso2" token="false"
-                                         value="true">
-                                    <include name="**/bundles.info"/>
-                                </replace>
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>-->
+                    <!--  <execution>
+                          <phase>package</phase>
+                          <configuration>
+                              <tasks>
+                                  <replace dir="target/wso2carbon-kernel-${carbon.kernel.version}/wso2" token="false"
+                                           value="true">
+                                      <include name="**/bundles.info"/>
+                                  </replace>
+                              </tasks>
+                          </configuration>
+                          <goals>
+                              <goal>run</goal>
+                          </goals>
+                      </execution>-->
                     <!-- <execution>
                          <id>clean_target</id>
                          <phase>install</phase>
@@ -509,11 +749,11 @@
         </plugins>
     </build>
     <properties>
-        <org.wso2.carbon.pax.exam.feature.version>5.2.0.1</org.wso2.carbon.pax.exam.feature.version>
+        <org.wso2.carbon.pax.exam.feature.version>5.2.0</org.wso2.carbon.pax.exam.feature.version>
         <org.wso2.carbon.c5.sample.feature.version>5.2.0
         </org.wso2.carbon.c5.sample.feature.version>
-        <org.wso2.carbon.c5.extending.feature.version>5.2.0.0
+        <org.wso2.carbon.c5.extending.feature.version>5.2.0
         </org.wso2.carbon.c5.extending.feature.version>
-        <c5-custom-product.version>5.3.0</c5-custom-product.version>
+        <c5-custom-product.version>5.4.0</c5-custom-product.version>
     </properties>
 </project>
