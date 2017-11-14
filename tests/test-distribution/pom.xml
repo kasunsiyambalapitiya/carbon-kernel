@@ -407,7 +407,7 @@
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
                             <targetPath>file:${basedir}/c5-custom-product-${c5-custom-product.version}/wso2
                             </targetPath>
-                            <runtime>default</runtime>
+                            <runtime>runtime1</runtime>
                         </configuration>
                     </execution>
                     <execution>
@@ -420,7 +420,7 @@
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
                             <targetPath>file:${basedir}/c5-custom-product-${c5-custom-product.version}/wso2
                             </targetPath>
-                            <runtime>runtime1</runtime>
+                            <runtime>runtime2</runtime>
                         </configuration>
                     </execution>
                     <execution>
@@ -433,7 +433,7 @@
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
                             <targetPath>file:${basedir}/c5-custom-product-${c5-custom-product.version}/wso2
                             </targetPath>
-                            <runtime>runtime2</runtime>
+                            <runtime>runtime3</runtime>
                         </configuration>
                     </execution>
                     <execution>
@@ -446,7 +446,7 @@
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
                             <targetPath>file:${basedir}/c5-custom-product-${c5-custom-product.version}/wso2
                             </targetPath>
-                            <runtime>runtime3</runtime>
+                            <runtime>runtime4</runtime>
                         </configuration>
                     </execution>
                     <execution>
@@ -456,7 +456,7 @@
                             <goal>install</goal>
                         </goals>
                         <configuration>
-                            <runtime>default</runtime>
+                            <runtime>runtime1</runtime>
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
                             <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
                             <deleteOldRuntimeFiles>false</deleteOldRuntimeFiles>
@@ -499,7 +499,7 @@
                             <goal>install</goal>
                         </goals>
                         <configuration>
-                            <runtime>runtime1</runtime>
+                            <runtime>runtime2</runtime>
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
                             <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
                             <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
@@ -546,7 +546,7 @@
                             <goal>install</goal>
                         </goals>
                         <configuration>
-                            <runtime>runtime2</runtime>
+                            <runtime>runtime3</runtime>
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
                             <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
                             <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
@@ -594,7 +594,7 @@
                             <goal>install</goal>
                         </goals>
                         <configuration>
-                            <runtime>runtime3</runtime>
+                            <runtime>runtime4</runtime>
                             <repositoryURL>file:${basedir}/target/p2-repo</repositoryURL>
                             <destination>${basedir}/c5-custom-product-${c5-custom-product.version}/wso2</destination>
                             <deleteOldRuntimeFiles>true</deleteOldRuntimeFiles>
