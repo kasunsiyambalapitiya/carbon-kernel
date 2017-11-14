@@ -28,20 +28,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sample.13.feature</artifactId>
-    <version>5.2.0</version>
+    <version>5.2.0.1</version>
     <packaging>carbon-feature</packaging>
 
     <dependencies>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>sample.4.feature</artifactId>
-            <version>5.2.0</version>
+            <version>${sample.4.feature.version}</version>
             <type>zip</type>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>sample.6.feature</artifactId>
-            <version>5.2.0</version>
+            <version>${sample.6.feature.version}</version>
             <type>zip</type>
         </dependency>
     </dependencies>
@@ -70,11 +70,11 @@
                             <importFeatures>
                                 <importFeatureDef>
                                     <id>sample.4.feature</id>
-                                    <version>5.2.0</version>
+                                    <version>${sample.4.feature.version}</version>
                                 </importFeatureDef>
                                 <importFeatureDef>
                                     <id>sample.6.feature</id>
-                                    <version>5.2.0</version>
+                                    <version>${sample.6.feature.version}</version>
                                 </importFeatureDef>
                             </importFeatures>
                         </configuration>
@@ -83,4 +83,8 @@
             </plugin>
         </plugins>
     </build>
+    <properties>
+        <sample.4.feature.version>5.2.0.1</sample.4.feature.version>
+       <sample.6.feature.version>5.2.0.1</sample.6.feature.version>
+    </properties>
 </project>

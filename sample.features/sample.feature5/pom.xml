@@ -28,24 +28,24 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sample.5.feature</artifactId>
-    <version>5.2.0</version>
+    <version>5.2.0.1</version>
     <packaging>carbon-feature</packaging>
 
     <dependencies>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>sample.bundle5</artifactId>
-            <version>5.2.0</version>
+            <version>${sample.bundle5.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>sample.bundle6</artifactId>
-            <version>5.2.0</version>
+            <version>${sample.bundle6.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>sample.bundle7</artifactId>
-            <version>5.2.0</version>
+            <version>${sample.bundle7.version}</version>
         </dependency>
     </dependencies>
 
@@ -73,15 +73,15 @@
                             <bundles>
                                 <bundle>
                                     <symbolicName>sample.bundle5</symbolicName>
-                                    <version>5.2.0</version>
+                                    <version>${sample.bundle5.version}</version>
                                 </bundle>
                                 <bundle>
                                     <symbolicName>sample.bundle6</symbolicName>
-                                    <version>5.2.0</version>
+                                    <version>${sample.bundle6.version}</version>
                                 </bundle>
                                 <bundle>
                                     <symbolicName>sample.bundle7</symbolicName>
-                                    <version>5.2.0</version>
+                                    <version>${sample.bundle7.version}</version>
                                 </bundle>
                             </bundles>
                         </configuration>
@@ -90,4 +90,9 @@
             </plugin>
         </plugins>
     </build>
+    <properties>
+        <sample.bundle5.version>5.2.0.1</sample.bundle5.version>
+        <sample.bundle6.version>5.2.0.1</sample.bundle6.version>
+        <sample.bundle7.version>5.2.0.1</sample.bundle7.version>
+    </properties>
 </project>

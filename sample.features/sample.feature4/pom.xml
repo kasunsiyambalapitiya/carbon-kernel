@@ -28,19 +28,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sample.4.feature</artifactId>
-    <version>5.2.0</version>
+    <version>5.2.0.1</version>
     <packaging>carbon-feature</packaging>
 
     <dependencies>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>sample.bundle4</artifactId>
-            <version>5.2.0</version>
+            <version>${sample.bundle4.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>sample.bundle6</artifactId>
-            <version>5.2.0</version>
+            <version>${sample.bundle6.version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -67,11 +67,11 @@
                             <bundles>
                                 <bundle>
                                     <symbolicName>sample.bundle4</symbolicName>
-                                    <version>5.2.0</version>
+                                    <version>${sample.bundle4.version}</version>
                                 </bundle>
                                 <bundle>
                                     <symbolicName>sample.bundle6</symbolicName>
-                                    <version>5.2.0</version>
+                                    <version>${sample.bundle6.version}</version>
                                 </bundle>
                             </bundles>
                         </configuration>
@@ -80,5 +80,9 @@
             </plugin>
         </plugins>
     </build>
+    <properties>
+        <sample.bundle4.version>5.2.0.1</sample.bundle4.version>
+        <sample.bundle6.version>5.2.0.1</sample.bundle6.version>
+    </properties>
 
 </project>

@@ -28,7 +28,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sample.bundle10</artifactId>
-    <version>5.2.0</version>
+    <version>5.2.0.1</version>
     <packaging>bundle</packaging>
 
     <dependencies>
@@ -52,7 +52,7 @@
             org.slf4j.*;version="${slf4j.logging.package.import.version.range}",
         </import.package>
         <export.package>
-            org.wso2.carbon.sample.bundle10.*;version="5.2.0",
+            org.wso2.carbon.sample.bundle10.*;version="5.2.0.1",
         </export.package>
     </properties>
 

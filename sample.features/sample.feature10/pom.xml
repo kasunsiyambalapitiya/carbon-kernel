@@ -28,24 +28,24 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sample.10.feature</artifactId>
-    <version>5.2.0</version>
+    <version>5.2.0.1</version>
     <packaging>carbon-feature</packaging>
 
     <dependencies>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>sample.bundle11</artifactId>
-            <version>5.2.0</version>
+            <version>${sample.bundle11.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>sample.bundle13</artifactId>
-            <version>5.2.0</version>
+            <version>${sample.bundle13.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>sample.bundle14</artifactId>
-            <version>5.2.0</version>
+            <version>${sample.bundle14.version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -72,15 +72,15 @@
                             <bundles>
                                 <bundle>
                                     <symbolicName>sample.bundle11</symbolicName>
-                                    <version>5.2.0</version>
+                                    <version>${sample.bundle11.version}</version>
                                 </bundle>
                                 <bundle>
                                     <symbolicName>sample.bundle13</symbolicName>
-                                    <version>5.2.0</version>
+                                    <version>${sample.bundle13.version}</version>
                                 </bundle>
                                 <bundle>
                                     <symbolicName>sample.bundle14</symbolicName>
-                                    <version>5.2.0</version>
+                                    <version>${sample.bundle14.version}</version>
                                 </bundle>
                             </bundles>
                         </configuration>
@@ -89,6 +89,10 @@
             </plugin>
         </plugins>
     </build>
-
+    <properties>
+        <sample.bundle11.version>5.2.0.1</sample.bundle11.version>
+        <sample.bundle13.version>5.2.0.1</sample.bundle13.version>
+        <sample.bundle14.version>5.2.0.1</sample.bundle14.version>
+    </properties>
 
 </project>

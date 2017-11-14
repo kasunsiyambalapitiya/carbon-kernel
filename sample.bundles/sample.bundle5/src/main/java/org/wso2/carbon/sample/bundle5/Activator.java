@@ -31,12 +31,12 @@ public class Activator implements BundleActivator {
 
     @Override
     public void start(BundleContext bundleContext) throws Exception {
-        logger.info("===== Activated the sample bundle 5");
+        logger.info("===== Activated the updated sample bundle 5");
 
     }
 
     @Override
     public void stop(BundleContext bundleContext) throws Exception {
-        logger.info("==== Deactivated sample bundle 5");
+        logger.info("==== Deactivated updated sample bundle 5");
     }
 }
